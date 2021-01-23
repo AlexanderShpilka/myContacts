@@ -1,0 +1,14 @@
+.logo {
+  position: relative;
+  bottom: 4px;
+}
+
+.logo-text {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  font-size: 10px;
+  color: white;
+  transform: translateX(-50%);
+  user-select: none;
+}

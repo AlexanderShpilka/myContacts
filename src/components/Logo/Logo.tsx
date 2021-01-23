@@ -1,9 +1,15 @@
 import logo from './logo.png';
+import './Logo.css';
 
 interface LogoProps {
   height: string;
 }
 
 export const Logo = ({ height }: LogoProps) => {
-  return <img src={logo} style={{ height: height }} alt="Logo." />;
+  return (
+    <div className="logo">
+      <img src={logo} style={{ height }} alt="Logo." />
+      <span className="logo-text">myContacts</span>
+    </div>
+  );
 };
