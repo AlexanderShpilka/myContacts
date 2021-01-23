@@ -1,5 +1,9 @@
 @import-normalize;
 
+:root {
+  --transition-duration: 250ms;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
