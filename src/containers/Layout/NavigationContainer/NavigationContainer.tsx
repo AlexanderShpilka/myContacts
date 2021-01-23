@@ -1,5 +1,6 @@
 import { MobileNavMenu } from 'components/Navigation/MobileNavMenu/MobileNavMenu';
 import { NavItem } from 'components/Navigation/NavItem/NavItem';
+import { DesktopNavMenu } from 'components/Navigation/DesktopNavMenu/DesktopNavMenu';
 
 interface NavigationContainerProps {
   isMobileMenuOpen: boolean;
@@ -24,7 +25,7 @@ export const NavigationContainer = ({ isMobileMenuOpen, onNavItemClickHandler }:
   return (
     <>
       <MobileNavMenu isMobileMenuOpen={isMobileMenuOpen}>{menuItems}</MobileNavMenu>
-      {/* <DesctopNavMenu /> pass nav items as children */}
+      <DesktopNavMenu>{menuItems}</DesktopNavMenu>
     </>
   );
 };
