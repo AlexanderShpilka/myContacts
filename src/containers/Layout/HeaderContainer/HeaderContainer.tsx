@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Header } from 'components/Header/Header';
 import { Container } from 'components/utility';
-import { NavigationContainer } from 'containers/Layout/NavigationContainer/NavigationContainer';
+import { NavigationContainer } from 'containers/layout/NavigationContainer/NavigationContainer';
 import { Logo } from 'components/Logo/Logo';
 import { Humburger } from 'components/Humburger/Humburger';
 

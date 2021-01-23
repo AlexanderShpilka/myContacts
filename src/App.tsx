@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 
 import { SignUp } from 'pages/auth/SignUp/SignUp';
-import { AppContainer } from 'containers/Layout/AppContainer/AppContainer';
+import { AppContainer } from 'containers/layout/AppContainer/AppContainer';
 
 import { ROUTES } from 'constants/routes';
 
