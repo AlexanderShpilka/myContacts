@@ -16,7 +16,10 @@ export const HeaderContainer = () => {
       <Container>
         <div className="header-inner">
           <Logo height="4rem" />
-          <NavigationContainer />
+          <NavigationContainer
+            isMobileMenuOpen={isMobileMenuOpen}
+            onNavItemClickHandler={() => setIsMobileMenuOpen(false)}
+          />
           <Humburger
             isOpen={isMobileMenuOpen}
             onClickHandler={() => setIsMobileMenuOpen((currentState) => !currentState)}
