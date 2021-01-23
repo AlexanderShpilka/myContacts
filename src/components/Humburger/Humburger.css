@@ -3,8 +3,6 @@
   width: 30px;
   height: 23px;
   padding: 0.5rem;
-  transform: rotate(0deg);
-  transition: 0.5s ease-in-out;
   cursor: pointer;
 }
 
@@ -18,7 +16,7 @@
   border-radius: 9px;
   opacity: 1;
   transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
+  transition: var(--transition-duration) ease-in-out;
 }
 
 .humburger span:nth-child(1) {
