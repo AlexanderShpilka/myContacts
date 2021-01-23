@@ -1,0 +1,17 @@
+.nav-item {
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid transparent;
+  font-size: 2.8rem;
+  color: #aaa;
+  transition: var(--transition-duration);
+}
+
+.nav-item:hover {
+  color: white;
+}
+
+.nav-item.active {
+  color: white;
+  border-bottom-color: white;
+}
