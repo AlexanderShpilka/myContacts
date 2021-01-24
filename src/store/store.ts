@@ -45,6 +45,6 @@ export { rrfProps };
 
 export type AppDispatch = typeof store.dispatch;
 
-export type AppThunk = ThunkAction<void, RootState, unknown, Action<string>>;
+export type AppThunk = ThunkAction<void, RootState, { getFirebase: any; getFirestore: any }, Action<string>>;
 
 export default store;
