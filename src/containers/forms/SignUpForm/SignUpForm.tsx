@@ -34,14 +34,14 @@ const signUpSchema = Yup.object().shape({
 });
 
 export const SignUpForm = () => {
-  const { loading } = useSelector(selectAuthState);
+  const { loading, error } = useSelector(selectAuthState);
 
   const dispatch = useDispatch();
 
   const initialValues: FormValues = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
   return (
-    <FormContainer title="Signup">
+    <FormContainer title="Signup" error={typeof error === 'string' ? error : ''}>
       <Formik
         initialValues={initialValues}
         onSubmit={async (values, actions) => {
