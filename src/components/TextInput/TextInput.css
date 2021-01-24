@@ -23,8 +23,8 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  font-size: 1.2rem;
-  color: red;
+  font-size: var(--font-size-error);
+  color: var(--color-error);
   visibility: hidden;
   opacity: 0;
   transform: translateY(-10px);

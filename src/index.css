@@ -2,6 +2,8 @@
 
 :root {
   --transition-duration: 250ms;
+  --color-error: red;
+  --font-size-error: 1.2rem;
 }
 
 html {
