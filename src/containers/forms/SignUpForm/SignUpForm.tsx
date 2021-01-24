@@ -1,10 +1,12 @@
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { FormContainer } from 'components/utility';
 import { TextInput } from 'components/TextInput/TextInput';
 import { Button } from 'components/Button/Button';
 
+import { selectAuthState, signUp } from 'store/slices/authSlice';
 import './SignUpForm.css';
 
 interface FormValues {
@@ -32,15 +34,18 @@ const signUpSchema = Yup.object().shape({
 });
 
 export const SignUpForm = () => {
+  const { loading } = useSelector(selectAuthState);
+
+  const dispatch = useDispatch();
+
   const initialValues: FormValues = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
   return (
     <FormContainer title="Signup">
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, actions) => {
-          console.log({ values, actions });
-          alert(JSON.stringify(values, null, 2));
+        onSubmit={async (values, actions) => {
+          await dispatch(signUp(values));
           actions.setSubmitting(false);
         }}
         validationSchema={signUpSchema}
@@ -51,8 +56,8 @@ export const SignUpForm = () => {
           <TextInput type="email" name="email" placeholder="E-mail" />
           <TextInput type="password" name="password" placeholder="Password" />
           <TextInput type="password" name="confirmPassword" placeholder="Confirm password" />
-          <Button type="button" variant="primary" stretch>
-            Sign Up
+          <Button type="submit" variant="primary" stretch disabled={loading}>
+            {loading ? 'Signing Up...' : 'Sign Up'}
           </Button>
         </Form>
       </Formik>
