@@ -7,11 +7,13 @@ import { RootState } from 'store/rootReducer';
 interface AuthState {
   error: null | boolean | string;
   loading: boolean;
+  verificationSuccess: null | boolean;
 }
 
 const initialState: AuthState = {
   error: null,
   loading: false,
+  verificationSuccess: null,
 };
 
 const authSlice = createSlice({
@@ -21,23 +23,27 @@ const authSlice = createSlice({
     cleanUp(state) {
       state.error = null;
       state.loading = false;
+      state.verificationSuccess = null;
     },
-    signUpStart(state) {
+    authStart(state) {
       state.loading = true;
       state.error = null;
+      state.verificationSuccess = null;
     },
-    signUpSuccess(state) {
+    authSuccess(state) {
       state.loading = false;
-      state.error = false;
     },
-    signUpFailure(state, action: PayloadAction<string>) {
+    authFailure(state, action: PayloadAction<string>) {
       state.loading = false;
       state.error = action.payload;
+    },
+    verificationSuccess(state) {
+      state.verificationSuccess = true;
     },
   },
 });
 
-export const { cleanUp, signUpStart, signUpSuccess, signUpFailure } = authSlice.actions;
+export const { cleanUp, authStart, authSuccess, authFailure, verificationSuccess } = authSlice.actions;
 
 export default authSlice.reducer;
 
@@ -52,7 +58,7 @@ interface SignUpInputData {
 
 export const signUp = ({ firstName, lastName, email, password }: SignUpInputData): AppThunk => async (dispatch) => {
   try {
-    dispatch(signUpStart());
+    dispatch(authStart());
     const res = await firebase.auth().createUserWithEmailAndPassword(email, password);
     const user = firebase.auth().currentUser;
     await user?.sendEmailVerification();
@@ -60,8 +66,20 @@ export const signUp = ({ firstName, lastName, email, password }: SignUpInputData
       firstName,
       lastName,
     });
-    dispatch(signUpSuccess());
+    dispatch(authSuccess());
   } catch (err) {
-    dispatch(signUpFailure(err.message));
+    dispatch(authFailure(err.message));
+  }
+};
+
+export const verifyEmail = (): AppThunk => async (dispatch) => {
+  try {
+    dispatch(authStart());
+    const user = firebase.auth().currentUser;
+    await user?.sendEmailVerification();
+    dispatch(authSuccess());
+    dispatch(verificationSuccess());
+  } catch (err) {
+    dispatch(authFailure(err.message));
   }
 };
