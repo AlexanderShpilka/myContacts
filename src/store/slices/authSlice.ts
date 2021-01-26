@@ -55,7 +55,6 @@ interface SignUpInputData {
   email: string;
   password: string;
 }
-
 export const signUp = ({ firstName, lastName, email, password }: SignUpInputData): AppThunk => async (dispatch) => {
   try {
     dispatch(authStart());
@@ -89,5 +88,19 @@ export const signOut = (): AppThunk => async () => {
     await firebase.auth().signOut();
   } catch (err) {
     console.error(err.message);
+  }
+};
+
+interface SignInInputData {
+  email: string;
+  password: string;
+}
+export const signIn = ({ email, password }: SignInInputData): AppThunk => async (dispatch) => {
+  try {
+    dispatch(authStart());
+    await firebase.auth().signInWithEmailAndPassword(email, password);
+    dispatch(authSuccess());
+  } catch (err) {
+    dispatch(authFailure(err.message));
   }
 };
