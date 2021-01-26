@@ -4,4 +4,5 @@ export const ROUTES = {
   CONTACTS: '/',
   PROFILE: '/profile',
   SIGNIN: '/signin',
+  SIGNOUT: '/signout',
 };

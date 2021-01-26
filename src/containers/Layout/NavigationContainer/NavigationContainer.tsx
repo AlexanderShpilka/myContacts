@@ -21,15 +21,25 @@ export const NavigationContainer = ({ isMobileMenuOpen, onNavItemClickHandler }:
 
   if (uid && !emailVerified) {
     menuItems = (
-      <NavItem to={ROUTES.PROFILE} onNavItemClickHandler={onNavItemClickHandler}>
-        Profile
-      </NavItem>
+      <>
+        <NavItem to={ROUTES.PROFILE} onNavItemClickHandler={onNavItemClickHandler}>
+          Profile
+        </NavItem>
+        <NavItem to={ROUTES.SIGNOUT} onNavItemClickHandler={onNavItemClickHandler}>
+          Sign Out
+        </NavItem>
+      </>
     );
   } else if (uid && emailVerified) {
     menuItems = (
-      <NavItem to={ROUTES.CONTACTS} onNavItemClickHandler={onNavItemClickHandler}>
-        Contacts
-      </NavItem>
+      <>
+        <NavItem to={ROUTES.CONTACTS} onNavItemClickHandler={onNavItemClickHandler}>
+          Contacts
+        </NavItem>
+        <NavItem to={ROUTES.SIGNOUT} onNavItemClickHandler={onNavItemClickHandler}>
+          Sign Out
+        </NavItem>
+      </>
     );
   } else {
     menuItems = (

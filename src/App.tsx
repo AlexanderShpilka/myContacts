@@ -7,6 +7,7 @@ import { VerifyEmail } from 'pages/auth/VerifyEmail/VerifyEmail';
 import { Contacts } from 'pages/contacts/Contacts/Contacts';
 import { Profile } from 'pages/auth/Profile/Profile';
 import { SignIn } from 'pages/auth/SignIn/SignIn';
+import { SignOut } from 'pages/auth/SignOut/SignOut';
 
 import { ROUTES } from 'constants/routes';
 import { RootState } from 'store/rootReducer';
@@ -23,6 +24,7 @@ export const App = () => {
       <Switch>
         <Route path={ROUTES.VERIFY_EMAIL} exact component={VerifyEmail} />
         <Route path={ROUTES.PROFILE} exact component={Profile} />
+        <Route path={ROUTES.SIGNOUT} exact component={SignOut} />
         <Redirect to={ROUTES.VERIFY_EMAIL} />
       </Switch>
     );
@@ -30,6 +32,7 @@ export const App = () => {
     routes = (
       <Switch>
         <Route path={ROUTES.CONTACTS} exact component={Contacts} />
+        <Route path={ROUTES.SIGNOUT} exact component={SignOut} />
         <Redirect to={ROUTES.CONTACTS} />
       </Switch>
     );

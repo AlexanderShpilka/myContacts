@@ -83,3 +83,11 @@ export const verifyEmail = (): AppThunk => async (dispatch) => {
     dispatch(authFailure(err.message));
   }
 };
+
+export const signOut = (): AppThunk => async () => {
+  try {
+    await firebase.auth().signOut();
+  } catch (err) {
+    console.error(err.message);
+  }
+};
