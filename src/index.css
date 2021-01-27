@@ -3,6 +3,8 @@
 :root {
   --transition-duration: 250ms;
   --color-error: red;
+  --color-danger: #dc3545;
+  --color-danger-hover: #c82333;
   --font-size-error: 1.2rem;
 }
 
