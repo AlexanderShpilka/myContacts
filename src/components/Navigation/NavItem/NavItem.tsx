@@ -10,7 +10,7 @@ interface NavItemProps {
 
 export const NavItem: FC<NavItemProps> = ({ children, to, onNavItemClickHandler }) => {
   return (
-    <NavLink to={to} className="nav-item" activeClassName="active" onClick={onNavItemClickHandler}>
+    <NavLink to={to} className="nav-item" activeClassName="active" onClick={onNavItemClickHandler} exact>
       {children}
     </NavLink>
   );
