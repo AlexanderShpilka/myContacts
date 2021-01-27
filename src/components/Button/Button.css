@@ -35,6 +35,10 @@
   background-color: blue;
 }
 
+.button.danger::after {
+  background-color: var(--color-danger);
+}
+
 .button::before {
   content: '';
   position: absolute;
@@ -50,12 +54,11 @@
   background-color: darkblue;
 }
 
-.button.primary:hover,
-.button.primary:active,
-.button.primary:focus {
-  background-color: darkblue;
+.button.danger::before {
+  background-color: var(--color-danger-hover);
 }
 
-.button:not(:disabled):hover::before {
+.button:not(:disabled):hover::before,
+.button:not(:disabled):focus::before {
   width: 100%;
 }
