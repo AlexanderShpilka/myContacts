@@ -36,6 +36,9 @@ export const NavigationContainer = ({ isMobileMenuOpen, onNavItemClickHandler }:
         <NavItem to={ROUTES.CONTACTS} onNavItemClickHandler={onNavItemClickHandler}>
           Contacts
         </NavItem>
+        <NavItem to={ROUTES.PROFILE} onNavItemClickHandler={onNavItemClickHandler}>
+          Profile
+        </NavItem>
         <NavItem to={ROUTES.SIGNOUT} onNavItemClickHandler={onNavItemClickHandler}>
           Sign Out
         </NavItem>

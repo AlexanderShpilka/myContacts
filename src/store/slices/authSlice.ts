@@ -8,12 +8,14 @@ interface AuthState {
   error: null | boolean | string;
   loading: boolean;
   verificationSuccess: null | boolean;
+  editProfileSuccess: null | boolean;
 }
 
 const initialState: AuthState = {
   error: null,
   loading: false,
   verificationSuccess: null,
+  editProfileSuccess: null,
 };
 
 const authSlice = createSlice({
@@ -24,11 +26,13 @@ const authSlice = createSlice({
       state.error = null;
       state.loading = false;
       state.verificationSuccess = null;
+      state.editProfileSuccess = null;
     },
     authStart(state) {
       state.loading = true;
       state.error = null;
       state.verificationSuccess = null;
+      state.editProfileSuccess = null;
     },
     authSuccess(state) {
       state.loading = false;
@@ -40,10 +44,20 @@ const authSlice = createSlice({
     verificationSuccess(state) {
       state.verificationSuccess = true;
     },
+    editProfileSuccess(state) {
+      state.editProfileSuccess = true;
+    },
   },
 });
 
-export const { cleanUp, authStart, authSuccess, authFailure, verificationSuccess } = authSlice.actions;
+export const {
+  cleanUp,
+  authStart,
+  authSuccess,
+  authFailure,
+  verificationSuccess,
+  editProfileSuccess,
+} = authSlice.actions;
 
 export default authSlice.reducer;
 
@@ -100,6 +114,37 @@ export const signIn = ({ email, password }: SignInInputData): AppThunk => async 
     dispatch(authStart());
     await firebase.auth().signInWithEmailAndPassword(email, password);
     dispatch(authSuccess());
+  } catch (err) {
+    dispatch(authFailure(err.message));
+  }
+};
+
+interface EditProfileInputData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+}
+export const editProfile = ({ firstName, lastName, email, password }: EditProfileInputData): AppThunk => async (
+  dispatch,
+  getState,
+) => {
+  try {
+    dispatch(authStart());
+    const user = firebase.auth().currentUser;
+    const { email: userEmail, uid } = getState().firebase.auth;
+    if (email !== userEmail) {
+      await user?.updateEmail(email);
+    }
+    await firebase.firestore().collection('users').doc(uid).set({
+      firstName,
+      lastName,
+    });
+    if (password) {
+      await user?.updatePassword(password);
+    }
+    dispatch(authSuccess());
+    dispatch(editProfileSuccess());
   } catch (err) {
     dispatch(authFailure(err.message));
   }

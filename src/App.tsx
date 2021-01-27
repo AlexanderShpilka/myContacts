@@ -32,6 +32,7 @@ export const App = () => {
     routes = (
       <Switch>
         <Route path={ROUTES.CONTACTS} exact component={Contacts} />
+        <Route path={ROUTES.PROFILE} exact component={Profile} />
         <Route path={ROUTES.SIGNOUT} exact component={SignOut} />
         <Redirect to={ROUTES.CONTACTS} />
       </Switch>
