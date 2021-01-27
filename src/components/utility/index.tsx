@@ -30,3 +30,11 @@ export const FormContainer: FC<FormContainerProps> = ({ title, error, success, c
     </div>
   );
 };
+
+interface BackdropProps {
+  open: boolean;
+  onClick: () => void;
+}
+export const Backdrop = ({ open, onClick }: BackdropProps) => {
+  return <div className={open ? 'backdrop backdrop--show' : 'backdrop'} onClick={onClick} />;
+};
