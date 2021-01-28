@@ -149,3 +149,17 @@ export const editProfile = ({ firstName, lastName, email, password }: EditProfil
     dispatch(authFailure(err.message));
   }
 };
+
+export const deleteAccount = (): AppThunk => async (dispatch, getState) => {
+  try {
+    dispatch(authStart());
+    const user = firebase.auth().currentUser;
+    const { uid } = getState().firebase.auth;
+    firebase.firestore().collection('users').doc(uid).delete();
+    // firebase.firestore().collection('contacts').doc(uid).delete();
+    await user?.delete();
+    dispatch(authSuccess());
+  } catch (err) {
+    dispatch(authFailure(err.message));
+  }
+};
