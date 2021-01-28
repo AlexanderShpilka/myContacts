@@ -27,3 +27,32 @@
   text-align: center;
   text-transform: uppercase;
 }
+
+.modal-feedback-wrapper {
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-feedback {
+  font-size: var(--font-size-error);
+  color: var(--color-error);
+  text-align: center;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: var(--transition-duration);
+}
+
+.modal-feedback--show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .modal-feedback {
+    padding: 0 2.5rem;
+  }
+}
