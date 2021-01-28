@@ -39,6 +39,10 @@
   background-color: var(--color-danger);
 }
 
+.button.secondary::after {
+  background-color: #6c757d;
+}
+
 .button::before {
   content: '';
   position: absolute;
@@ -56,6 +60,10 @@
 
 .button.danger::before {
   background-color: var(--color-danger-hover);
+}
+
+.button.secondary::before {
+  background-color: #5a6268;
 }
 
 .button:not(:disabled):hover::before,
