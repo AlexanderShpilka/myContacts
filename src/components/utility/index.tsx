@@ -38,3 +38,22 @@ interface BackdropProps {
 export const Backdrop = ({ open, onClick }: BackdropProps) => {
   return <div className={open ? 'backdrop backdrop--show' : 'backdrop'} onClick={onClick} />;
 };
+
+export const Loader = () => {
+  return (
+    <div className="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
