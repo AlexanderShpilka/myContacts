@@ -1,5 +1,6 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { isLoaded } from 'react-redux-firebase';
 
 import { SignUp } from 'pages/auth/SignUp/SignUp';
 import { AppContainer } from 'containers/layout/AppContainer/AppContainer';
@@ -8,14 +9,18 @@ import { Contacts } from 'pages/contacts/Contacts/Contacts';
 import { Profile } from 'pages/auth/Profile/Profile';
 import { SignIn } from 'pages/auth/SignIn/SignIn';
 import { SignOut } from 'pages/auth/SignOut/SignOut';
+import { Loader } from 'components/utility';
 
 import { ROUTES } from 'constants/routes';
 import { RootState } from 'store/rootReducer';
 
 export const App = () => {
-  const {
-    auth: { uid, emailVerified },
-  } = useSelector(({ firebase }: RootState) => firebase);
+  const { auth } = useSelector(({ firebase }: RootState) => firebase);
+  const { uid, emailVerified } = auth;
+
+  if (!isLoaded(auth)) {
+    return <Loader />;
+  }
 
   let routes;
 

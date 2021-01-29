@@ -1,4 +1,4 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
@@ -10,7 +10,7 @@ import store, { rrfProps } from 'store/store';
 import './index.css';
 
 render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <ReactReduxFirebaseProvider {...rrfProps}>
@@ -18,6 +18,6 @@ render(
         </ReactReduxFirebaseProvider>
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root'),
 );
