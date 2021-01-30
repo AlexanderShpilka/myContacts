@@ -3,7 +3,6 @@
   z-index: 1;
   display: inline-block;
   padding: 1.25rem;
-  margin-top: 3rem;
   border: none;
   font-size: 1.6rem;
   color: #fff;
@@ -43,6 +42,10 @@
   background-color: #6c757d;
 }
 
+.button.success::after {
+  background-color: #28a745;
+}
+
 .button::before {
   content: '';
   position: absolute;
@@ -64,6 +67,10 @@
 
 .button.secondary::before {
   background-color: #5a6268;
+}
+
+.button.success::before {
+  background-color: #218838;
 }
 
 .button:not(:disabled):hover::before,
