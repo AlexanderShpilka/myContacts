@@ -28,8 +28,8 @@ const accountSchema = Yup.object().shape({
   lastName: Yup.string().min(2, 'Last name is too short').max(25, 'Last name is too long'),
   email: Yup.string().email('Invalid e-mail'),
   phone: Yup.string().required('Phone is required').min(9, 'Phone is too short'),
-  category: Yup.string().oneOf(['friends', 'job', 'family', 'other'], 'Invalid category type').required('Required'),
-  birthday: Yup.string(),
+  category: Yup.string().oneOf(['friends', 'job', 'family', 'other'], 'Invalid category type'),
+  birthday: Yup.date().nullable(),
 });
 
 interface AddContactProps {
