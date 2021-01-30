@@ -2,6 +2,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Backdrop } from 'components/utility';
 import { Modal } from 'components/Modal/Modal';
@@ -9,6 +10,7 @@ import { TextInput } from 'components/TextInput/TextInput';
 import { Button } from 'components/Button/Button';
 import { FormikSelect } from 'components/FormikSelect/FormikSelect';
 
+import { createContact, selectContactsState } from 'store/slices/contactsSlice';
 import './AddContact.css';
 
 interface FormValues {
@@ -38,6 +40,10 @@ interface AddContactProps {
 }
 
 export const AddContact = ({ open, onClickHandler }: AddContactProps) => {
+  const { loading, error } = useSelector(selectContactsState);
+
+  const dispatch = useDispatch();
+
   const initialValues: FormValues = {
     firstName: '',
     lastName: '',
@@ -50,12 +56,18 @@ export const AddContact = ({ open, onClickHandler }: AddContactProps) => {
   return (
     <>
       <Backdrop open={open} onClick={onClickHandler} />
-      <Modal title="Add new contact" open={open}>
+      <Modal title="Add new contact" open={open} feedback={typeof error === 'string' ? error : ''}>
         <Formik
           initialValues={initialValues}
-          onSubmit={(values, actions) => {
-            console.log(values);
+          onSubmit={async (values, actions) => {
+            await dispatch(
+              createContact(
+                { ...values, birthday: values.birthday ? values.birthday.toISOString() : '' },
+                onClickHandler,
+              ),
+            );
             actions.setSubmitting(false);
+            actions.resetForm();
           }}
           validationSchema={accountSchema}
         >
@@ -85,7 +97,7 @@ export const AddContact = ({ open, onClickHandler }: AddContactProps) => {
               </div>
               <div className="add-contact-buttons-wrapper">
                 <div className="add-contact-create-button-wrapper">
-                  <Button type="submit" variant="primary" stretch>
+                  <Button type="submit" variant="primary" stretch disabled={loading}>
                     Create
                   </Button>
                 </div>
