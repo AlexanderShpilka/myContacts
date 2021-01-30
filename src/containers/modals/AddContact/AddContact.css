@@ -1,0 +1,50 @@
+.add-contact-birthday {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  border: none;
+  border-bottom: 2px solid blue;
+  outline: none;
+  transition: var(--transition-duration);
+}
+
+.add-contact-birthday:focus,
+.add-contact-birthday:active {
+  border-bottom-color: darkblue;
+}
+
+.add-contact-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6.5rem;
+}
+
+.add-contact-create-button-wrapper {
+  width: 36%;
+}
+
+.add-contact-cancel-button-wrapper {
+  width: 36%;
+}
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker-popper {
+  z-index: 2;
+}
+
+.react-datepicker {
+  font-size: 1.4rem;
+}
+
+.react-datepicker__current-month {
+  font-size: 1.4rem;
+}
+
+.react-datepicker__day,
+.react-datepicker__day-name {
+  width: 2.6rem;
+  line-height: 2.6rem;
+}
