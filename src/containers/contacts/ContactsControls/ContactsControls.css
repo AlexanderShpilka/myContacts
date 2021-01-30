@@ -1,0 +1,11 @@
+.contacts-controls {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  margin-bottom: 3rem;
+  border-bottom: 2px solid darkblue;
+}
+
+.contacts-controls-input-wrapper {
+  width: 55%;
+}
