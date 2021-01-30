@@ -12,10 +12,11 @@ interface ButtonProps {
   stretch?: boolean;
   disabled?: boolean;
   onClickHandler?: () => void;
+  round?: boolean;
 }
 
-export const Button: FC<ButtonProps> = ({ type, variant, stretch, disabled, onClickHandler, children }) => {
-  const buttonClassName = `button ${variant} ${stretch ? 'stretch' : ''}`;
+export const Button: FC<ButtonProps> = ({ type, variant, stretch, disabled, round, onClickHandler, children }) => {
+  const buttonClassName = `button ${variant} ${stretch ? 'stretch' : ''} ${round ? 'round' : ''}`;
 
   return (
     <button className={buttonClassName} type={type} disabled={disabled} onClick={onClickHandler}>
