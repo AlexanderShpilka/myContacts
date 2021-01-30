@@ -1,0 +1,14 @@
+.simple-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.6rem;
+  border: none;
+  border-bottom: 2px solid blue;
+  outline: none;
+  transition: var(--transition-duration);
+}
+
+.simple-input:focus,
+.simple-input:active {
+  border-bottom-color: darkblue;
+}
