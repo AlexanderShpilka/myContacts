@@ -4,7 +4,7 @@ import './Button.css';
 
 type ButtonType = 'button' | 'submit';
 
-type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success';
+type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'success' | 'warning';
 
 interface ButtonProps {
   type: ButtonType;
