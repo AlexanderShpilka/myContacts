@@ -9,6 +9,7 @@ interface AuthState {
   loading: boolean;
   verificationSuccess: null | boolean;
   editProfileSuccess: null | boolean;
+  deleteProfileError: null | string;
 }
 
 const initialState: AuthState = {
@@ -16,6 +17,7 @@ const initialState: AuthState = {
   loading: false,
   verificationSuccess: null,
   editProfileSuccess: null,
+  deleteProfileError: null,
 };
 
 const authSlice = createSlice({
@@ -27,12 +29,14 @@ const authSlice = createSlice({
       state.loading = false;
       state.verificationSuccess = null;
       state.editProfileSuccess = null;
+      state.deleteProfileError = null;
     },
     authStart(state) {
       state.loading = true;
       state.error = null;
       state.verificationSuccess = null;
       state.editProfileSuccess = null;
+      state.deleteProfileError = null;
     },
     authSuccess(state) {
       state.loading = false;
@@ -47,6 +51,10 @@ const authSlice = createSlice({
     editProfileSuccess(state) {
       state.editProfileSuccess = true;
     },
+    deleteProfileFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.deleteProfileError = action.payload;
+    },
   },
 });
 
@@ -57,6 +65,7 @@ export const {
   authFailure,
   verificationSuccess,
   editProfileSuccess,
+  deleteProfileFailure,
 } = authSlice.actions;
 
 export default authSlice.reducer;
@@ -156,10 +165,10 @@ export const deleteAccount = (): AppThunk => async (dispatch, getState) => {
     const user = firebase.auth().currentUser;
     const { uid } = getState().firebase.auth;
     firebase.firestore().collection('users').doc(uid).delete();
-    // firebase.firestore().collection('contacts').doc(uid).delete();
+    firebase.firestore().collection('contacts').doc(uid).delete();
     await user?.delete();
     dispatch(authSuccess());
   } catch (err) {
-    dispatch(authFailure(err.message));
+    dispatch(deleteProfileFailure(err.message));
   }
 };

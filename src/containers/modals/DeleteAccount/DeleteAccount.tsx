@@ -13,14 +13,18 @@ interface DeleteAccountProps {
 }
 
 export const DeleteAccount = ({ open, onClickHandler }: DeleteAccountProps) => {
-  const { error, loading } = useSelector(selectAuthState);
+  const { deleteProfileError, loading } = useSelector(selectAuthState);
 
   const dispatch = useDispatch();
 
   return (
     <>
       <Backdrop open={open} onClick={onClickHandler} />
-      <Modal title="Delete account" open={open} feedback={typeof error === 'string' ? error : ''}>
+      <Modal
+        title="Delete account"
+        open={open}
+        feedback={typeof deleteProfileError === 'string' ? deleteProfileError : ''}
+      >
         <div className="delete-account-buttons">
           <Button type="button" variant="danger" onClickHandler={() => dispatch(deleteAccount())} disabled={loading}>
             Delete
