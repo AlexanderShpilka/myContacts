@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useFirestoreConnect } from 'react-redux-firebase';
 
@@ -32,10 +32,18 @@ export const ContactList = () => {
     content = <p>Add your first contact</p>;
   }
 
+  const visibleContacts = useMemo(() => {
+    return [...contacts].sort((contA, contB) => {
+      const contAFullName = `${contA.firstName}${contA.lastName ? contA.lastName : ''}`;
+      const contBFullName = `${contB.firstName}${contB.lastName ? contB.lastName : ''}`;
+      return contAFullName.localeCompare(contBFullName);
+    });
+  }, [contacts]);
+
   return (
     <>
       {content}
-      {contacts?.map((contact) => (
+      {visibleContacts.map((contact) => (
         <div className="contact-list-card-wrapper" key={contact.id}>
           <ContactCard
             {...contact}
