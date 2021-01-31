@@ -22,7 +22,7 @@ interface FormValues {
   birthday: Date | null;
 }
 
-const accountSchema = Yup.object().shape({
+const contactSchema = Yup.object().shape({
   firstName: Yup.string()
     .required('First name is required')
     .min(2, 'First name is too short')
@@ -69,7 +69,7 @@ export const AddContact = ({ open, onClickHandler }: AddContactProps) => {
             actions.setSubmitting(false);
             actions.resetForm();
           }}
-          validationSchema={accountSchema}
+          validationSchema={contactSchema}
         >
           {({ values, setFieldValue, resetForm }) => (
             <Form>
