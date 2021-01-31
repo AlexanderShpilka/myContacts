@@ -21,12 +21,22 @@ export const DeleteContact = ({ open, onCancelButtonClickHandler, onDeleteButton
       <Backdrop open={open} onClick={onCancelButtonClickHandler} />
       <Modal title="Delete contact" open={open} feedback={typeof error === 'string' ? error : ''}>
         <div className="delete-contact-buttons">
-          <Button type="button" variant="danger" onClickHandler={onDeleteButtonClickHandler} disabled={loading}>
-            {loading ? 'Deleting...' : 'Delete'}
-          </Button>
-          <Button type="button" variant="secondary" onClickHandler={onCancelButtonClickHandler}>
-            Cancel
-          </Button>
+          <div className="delete-contact-button-wrapper">
+            <Button
+              type="button"
+              variant="danger"
+              onClickHandler={onDeleteButtonClickHandler}
+              disabled={loading}
+              stretch
+            >
+              {loading ? 'Deleting...' : 'Delete'}
+            </Button>
+          </div>
+          <div className="delete-contact-button-wrapper">
+            <Button type="button" variant="secondary" onClickHandler={onCancelButtonClickHandler} stretch>
+              Cancel
+            </Button>
+          </div>
         </div>
       </Modal>
     </>

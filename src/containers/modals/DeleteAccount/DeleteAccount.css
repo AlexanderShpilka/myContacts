@@ -1,4 +1,8 @@
 .delete-account-buttons {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.delete-account-button-wrapper {
+  width: 36%;
 }

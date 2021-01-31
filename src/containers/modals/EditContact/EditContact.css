@@ -1,9 +1,9 @@
-.profile-form-buttons-wrapper {
+.edit-contact-buttons-wrapper {
   display: flex;
   justify-content: space-between;
   margin-top: 6.5rem;
 }
 
-.profile-form-button-wrapper {
+.edit-contact-button-wrapper {
   width: 36%;
 }

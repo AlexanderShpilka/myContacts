@@ -1,3 +1,8 @@
 .contact-list-card-wrapper {
   margin-bottom: 2rem;
 }
+
+.contact-list-text {
+  font-size: 1.6rem;
+  color: #999;
+}

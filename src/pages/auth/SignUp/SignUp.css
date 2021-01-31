@@ -1,3 +1,9 @@
 .signup-wrapper {
-  padding-top: 8rem;
+  padding-top: 4rem;
+}
+
+@media (min-width: 768px) {
+  .signup-wrapper {
+    padding-top: 8rem;
+  }
 }

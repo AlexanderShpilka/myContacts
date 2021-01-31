@@ -20,7 +20,7 @@
   flex-direction: column;
   flex-shrink: 0;
   width: 10%;
-  min-width: 4rem;
+  min-width: 5rem;
 }
 
 .contact-card-data-item {

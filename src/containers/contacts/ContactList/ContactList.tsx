@@ -22,7 +22,7 @@ export const ContactList = ({ searchQuery }: ContactListProps) => {
   const { uid } = useSelector(({ firebase }: RootState) => firebase.auth);
   const contacts: ContactWithId[] = useSelector(({ firestore }: RootState) => firestore.data.contacts?.[uid]?.contacts);
   const requesting = useSelector(({ firestore }: RootState) => firestore.status.requesting[`contacts/${uid}`]);
-  const requested = useSelector(({ firestore }: RootState) => firestore.status.requested[`todos/${uid}`]);
+  const requested = useSelector(({ firestore }: RootState) => firestore.status.requested[`contacts/${uid}`]);
 
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ export const ContactList = ({ searchQuery }: ContactListProps) => {
   if (requesting) {
     content = <Loader />;
   } else if (requested && !contacts?.length) {
-    content = <p>Add your first contact</p>;
+    content = <p className="contact-list-text">Add your first contact</p>;
   }
 
   const visibleContacts = useMemo(() => {

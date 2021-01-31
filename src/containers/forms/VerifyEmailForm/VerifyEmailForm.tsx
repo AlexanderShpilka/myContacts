@@ -17,12 +17,24 @@ export const VerifyEmailForm = () => {
       success={verificationSuccess ? 'Message sent successfully' : ''}
     >
       <p className="verify-email-text">
-        Verification email was successfully sent. If you see no email please check your spam. Still have no email? Try
-        resending verification email.
+        Verification email was successfully sent. After you've verified email, please sign in to get the most out of our
+        application.
       </p>
-      <Button type="button" variant="primary" stretch disabled={loading} onClickHandler={() => dispatch(verifyEmail())}>
-        {loading ? 'Sending e-mail...' : 'Re-send e-mail'}
-      </Button>
+      <p className="verify-email-text">
+        If you see no email please check your spam. Still have no email? Try resending verification email.
+      </p>
+
+      <div className="verify-email-button-wrapper">
+        <Button
+          type="button"
+          variant="primary"
+          stretch
+          disabled={loading}
+          onClickHandler={() => dispatch(verifyEmail())}
+        >
+          {loading ? 'Sending e-mail...' : 'Re-send e-mail'}
+        </Button>
+      </div>
     </FormContainer>
   );
 };

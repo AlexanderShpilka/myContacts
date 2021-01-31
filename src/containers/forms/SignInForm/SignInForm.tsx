@@ -7,6 +7,7 @@ import { TextInput } from 'components/TextInput/TextInput';
 import { Button } from 'components/Button/Button';
 
 import { selectAuthState, signIn } from 'store/slices/authSlice';
+import './SignInForm.css';
 
 interface FormValues {
   email: string;
@@ -36,11 +37,13 @@ export const SignInForm = () => {
         validationSchema={signInSchema}
       >
         <Form>
-          <TextInput type="email" name="email" placeholder="E-mail" />
-          <TextInput type="password" name="password" placeholder="Password" />
-          <Button type="submit" variant="primary" stretch disabled={loading}>
-            {loading ? 'Signing In...' : 'Sign In'}
-          </Button>
+          <TextInput type="email" name="email" placeholder="E-mail *" />
+          <TextInput type="password" name="password" placeholder="Password *" />
+          <div className="signin-form-button-wrapper">
+            <Button type="submit" variant="primary" stretch disabled={loading}>
+              {loading ? 'Signing In...' : 'Sign In'}
+            </Button>
+          </div>
         </Form>
       </Formik>
     </FormContainer>

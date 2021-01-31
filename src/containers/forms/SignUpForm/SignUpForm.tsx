@@ -51,14 +51,16 @@ export const SignUpForm = () => {
         validationSchema={signUpSchema}
       >
         <Form>
-          <TextInput type="text" name="firstName" placeholder="First name" />
-          <TextInput type="text" name="lastName" placeholder="Last name" />
-          <TextInput type="email" name="email" placeholder="E-mail" />
-          <TextInput type="password" name="password" placeholder="Password" />
-          <TextInput type="password" name="confirmPassword" placeholder="Confirm password" />
-          <Button type="submit" variant="primary" stretch disabled={loading}>
-            {loading ? 'Signing Up...' : 'Sign Up'}
-          </Button>
+          <TextInput type="text" name="firstName" placeholder="First name *" />
+          <TextInput type="text" name="lastName" placeholder="Last name *" />
+          <TextInput type="email" name="email" placeholder="E-mail *" />
+          <TextInput type="password" name="password" placeholder="Password *" />
+          <TextInput type="password" name="confirmPassword" placeholder="Confirm password *" />
+          <div className="signup-form-button-wrapper">
+            <Button type="submit" variant="primary" stretch disabled={loading}>
+              {loading ? 'Signing Up...' : 'Sign Up'}
+            </Button>
+          </div>
         </Form>
       </Formik>
     </FormContainer>

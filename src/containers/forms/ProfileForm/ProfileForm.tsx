@@ -72,13 +72,17 @@ export const ProfileForm = () => {
             <TextInput type="email" name="email" placeholder="E-mail" />
             <TextInput type="password" name="password" placeholder="Password" />
             <TextInput type="password" name="confirmPassword" placeholder="Confirm password" />
-            <Button type="submit" variant="primary" stretch disabled={loading}>
-              {loading ? 'Editing profile...' : 'Edit profile'}
-            </Button>
-            <div className="delete-button-wrapper">
-              <Button type="button" variant="danger" onClickHandler={() => setModalOpen(true)}>
-                Delete account
-              </Button>
+            <div className="profile-form-buttons-wrapper">
+              <div className="profile-form-button-wrapper">
+                <Button type="submit" variant="primary" stretch disabled={loading}>
+                  {loading ? 'Editing profile...' : 'Edit profile'}
+                </Button>
+              </div>
+              <div className="profile-form-button-wrapper">
+                <Button type="button" variant="danger" stretch onClickHandler={() => setModalOpen(true)}>
+                  Delete account
+                </Button>
+              </div>
             </div>
           </Form>
         </Formik>

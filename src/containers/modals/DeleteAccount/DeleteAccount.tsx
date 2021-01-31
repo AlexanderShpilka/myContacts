@@ -26,12 +26,22 @@ export const DeleteAccount = ({ open, onClickHandler }: DeleteAccountProps) => {
         feedback={typeof deleteProfileError === 'string' ? deleteProfileError : ''}
       >
         <div className="delete-account-buttons">
-          <Button type="button" variant="danger" onClickHandler={() => dispatch(deleteAccount())} disabled={loading}>
-            Delete
-          </Button>
-          <Button type="button" variant="secondary" onClickHandler={onClickHandler}>
-            Cancel
-          </Button>
+          <div className="delete-account-button-wrapper">
+            <Button
+              type="button"
+              variant="danger"
+              onClickHandler={() => dispatch(deleteAccount())}
+              disabled={loading}
+              stretch
+            >
+              Delete
+            </Button>
+          </div>
+          <div className="delete-account-button-wrapper">
+            <Button type="button" variant="secondary" onClickHandler={onClickHandler} stretch>
+              Cancel
+            </Button>
+          </div>
         </div>
       </Modal>
     </>

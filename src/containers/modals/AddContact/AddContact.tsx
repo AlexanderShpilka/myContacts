@@ -92,6 +92,7 @@ export const AddContact = ({ open, onClickHandler }: AddContactProps) => {
                   onChange={(date) => setFieldValue('birthday', date)}
                   placeholderText="Birthday"
                   showYearDropdown
+                  showMonthDropdown
                   isClearable
                 />
               </div>

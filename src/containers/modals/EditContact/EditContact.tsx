@@ -11,6 +11,7 @@ import { Button } from 'components/Button/Button';
 import { FormikSelect } from 'components/FormikSelect/FormikSelect';
 
 import { selectContactsState, ContactWithId, editContact } from 'store/slices/contactsSlice';
+import './EditContact.css';
 
 interface FormValues {
   firstName: string;
@@ -96,13 +97,13 @@ export const EditContact = ({ open, onClickHandler, contact }: EditContactProps)
                   isClearable
                 />
               </div>
-              <div className="add-contact-buttons-wrapper">
-                <div className="add-contact-create-button-wrapper">
+              <div className="edit-contact-buttons-wrapper">
+                <div className="edit-contact-button-wrapper">
                   <Button type="submit" variant="primary" stretch disabled={loading}>
                     {loading ? 'Editing...' : 'Edit'}
                   </Button>
                 </div>
-                <div className="add-contact-cancel-button-wrapper">
+                <div className="edit-contact-button-wrapper">
                   <Button
                     type="button"
                     variant="secondary"

@@ -38,7 +38,7 @@ export const ContactCard = ({
   return (
     <div className="contact-card">
       <div className="contact-card-left">
-        <FontAwesomeIcon icon={faAddressCard} size="6x" color="darkblue" />
+        <FontAwesomeIcon icon={faAddressCard} size="5x" color="darkblue" />
       </div>
 
       <div className="contact-card-center">

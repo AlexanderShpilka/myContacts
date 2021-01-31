@@ -48,3 +48,22 @@
   width: 2.6rem;
   line-height: 2.6rem;
 }
+
+@media (max-width: 767px) {
+  .react-datepicker__year-option:first-of-type,
+  .react-datepicker__year-option:last-of-type {
+    height: 3rem;
+  }
+
+  .react-datepicker__navigation--years-upcoming {
+    top: 7px;
+  }
+
+  .react-datepicker__navigation--years-previous {
+    top: 12px;
+  }
+
+  .react-datepicker__year-read-view {
+    padding: 8px;
+  }
+}

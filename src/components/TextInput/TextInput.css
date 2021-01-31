@@ -1,7 +1,14 @@
 .text-input-wrapper {
   position: relative;
-  padding-bottom: 1.5rem;
-  margin-bottom: 2rem;
+  padding-bottom: 1.3rem;
+  margin-bottom: 1.7rem;
+}
+
+@media (min-width: 768px) {
+  .text-input-wrapper {
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .text-input {
