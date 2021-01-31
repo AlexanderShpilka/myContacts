@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { App } from './App';
 
@@ -12,11 +12,11 @@ import './index.css';
 render(
   <StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <ReactReduxFirebaseProvider {...rrfProps}>
           <App />
         </ReactReduxFirebaseProvider>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   </StrictMode>,
   document.getElementById('root'),
