@@ -43,7 +43,7 @@ export default contactsSlice.reducer;
 
 export const selectContactsState = ({ contacts }: RootState) => contacts;
 
-interface Contact {
+export interface Contact {
   firstName: string;
   lastName: string;
   email: string;
