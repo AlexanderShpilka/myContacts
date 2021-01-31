@@ -77,3 +77,36 @@ export const createContact = (newContactData: Contact, cb: () => void): AppThunk
     dispatch(contactsFailure(err.message));
   }
 };
+
+export interface ContactWithId extends Contact {
+  id: string;
+}
+export const editContact = (id: string, contactData: Contact, cb: () => void): AppThunk => async (
+  dispatch,
+  getState,
+) => {
+  const { uid } = getState().firebase.auth;
+  dispatch(contactsStart());
+
+  try {
+    const userRef = await firebase.firestore().collection('contacts').doc(uid);
+    const snapShot = await userRef.get();
+    const userContacts: ContactWithId[] = snapShot.data()?.contacts;
+
+    const userNewContacts = userContacts.map((contact) => {
+      if (contact.id === id) {
+        return { ...contact, ...contactData };
+      }
+      return contact;
+    });
+
+    await userRef.update({
+      contacts: userNewContacts,
+    });
+
+    cb();
+    dispatch(contactsSuccess());
+  } catch (err) {
+    dispatch(contactsFailure(err.message));
+  }
+};

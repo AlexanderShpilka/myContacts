@@ -21,9 +21,18 @@ interface ContactCardProps {
   phone: string;
   category: string;
   birthday?: string;
+  onEditButtonClickHandler: () => void;
 }
 
-export const ContactCard = ({ firstName, lastName, email, phone, category, birthday }: ContactCardProps) => {
+export const ContactCard = ({
+  firstName,
+  lastName,
+  email,
+  phone,
+  category,
+  birthday,
+  onEditButtonClickHandler,
+}: ContactCardProps) => {
   return (
     <div className="contact-card">
       <div className="contact-card-left">
@@ -67,7 +76,7 @@ export const ContactCard = ({ firstName, lastName, email, phone, category, birth
 
       <div className="contact-card-right">
         <div className="contact-card-button-wrapper">
-          <Button type="button" variant="warning" round>
+          <Button type="button" variant="warning" round onClickHandler={onEditButtonClickHandler}>
             <FontAwesomeIcon icon={faEdit} color="darkblue" />
           </Button>
         </div>
