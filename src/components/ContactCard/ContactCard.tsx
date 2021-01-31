@@ -22,6 +22,7 @@ interface ContactCardProps {
   category: string;
   birthday?: string;
   onEditButtonClickHandler: () => void;
+  onDeleteButtonClickHandler: () => void;
 }
 
 export const ContactCard = ({
@@ -32,6 +33,7 @@ export const ContactCard = ({
   category,
   birthday,
   onEditButtonClickHandler,
+  onDeleteButtonClickHandler,
 }: ContactCardProps) => {
   return (
     <div className="contact-card">
@@ -81,7 +83,7 @@ export const ContactCard = ({
           </Button>
         </div>
         <div className="contact-card-button-wrapper">
-          <Button type="button" variant="danger" round>
+          <Button type="button" variant="danger" round onClickHandler={onDeleteButtonClickHandler}>
             <FontAwesomeIcon icon={faTrashAlt} color="darkblue" />
           </Button>
         </div>

@@ -110,3 +110,21 @@ export const editContact = (id: string, contactData: Contact, cb: () => void): A
     dispatch(contactsFailure(err.message));
   }
 };
+
+export const deleteContact = (contact: ContactWithId, cb: () => void): AppThunk => async (dispatch, getState) => {
+  const { uid } = getState().firebase.auth;
+  dispatch(contactsStart());
+
+  try {
+    const userRef = await firebase.firestore().collection('contacts').doc(uid);
+
+    await userRef.update({
+      contacts: firebase.firestore.FieldValue.arrayRemove(contact),
+    });
+
+    cb();
+    dispatch(contactsSuccess());
+  } catch (err) {
+    dispatch(contactsFailure(err.message));
+  }
+};
